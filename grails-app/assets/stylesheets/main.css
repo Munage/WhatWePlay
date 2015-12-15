@@ -1,0 +1,36 @@
+.site-wrapper {
+	background-color: #262626;
+}
+
+.center {
+	margin: auto;
+	width: 60%;
+	padding: 10px;
+	text-align: center
+}
+
+.center img{
+	display: block;
+	padding-top: 20px;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.site-wrapper h2{
+	color: #f5f5f5;
+}
+
+.site-wrapper-inner {
+	padding-bottom: 30px;
+}
+
+.games td {
+	width: 230px;
+	word-wrap: break-word;
+	padding: 0px 5px;
+	color: #f5f5f5;
+}
+
+.left_col {
+	padding-left: 20px;
+}
