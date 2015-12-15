@@ -12,7 +12,7 @@
     <g:if test="${!session.steamId}">
         <div class="center">
             <h2>Please sign in with Steam to see what you and your friends have been playing</h2>
-            <g:link controller="home" action="login"><img src="/images/sits_large_border.png"/></g:link>
+            <g:link controller="home" action="login"><asset:image src="sits_large_border.png"/></g:link>
         </div>
     </g:if>
     <g:else>
