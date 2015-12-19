@@ -15,6 +15,12 @@ class SteamUserService {
         def response = restApiService.request(grailsApplication.config.steam.api.url, "/ISteamUser/GetFriendList/v0001", q)
     }
 
+    def getProfileInformation(def id){
+        Map q = [key: grailsApplication.config.steam.api.key, steamids:id, format:"json"]
+        def response = restApiService.request(grailsApplication.config.steam.api.url, "/ISteamUser/GetPlayerSummaries/v0002", q)
+        return response
+    }
+
     def getRecentlyPlayed(String id){
         if(!id){
             return null

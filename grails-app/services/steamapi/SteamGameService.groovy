@@ -34,6 +34,9 @@ class SteamGameService {
         friendList.friendslist.friends.each {
             friendGames = steamUserService.getRecentlyPlayed(it.steamid)
 
+            println(it)
+            println(steamUserService.getProfileInformation(it.steamid))
+
             friendGames["response"]["games"].each{
                 if(allGamesPlayed.containsKey(it.name)){
                     allGamesPlayed[it.name]["playtime_2weeks"] += it["playtime_2weeks"]
