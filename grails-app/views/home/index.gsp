@@ -17,7 +17,9 @@
     </g:if>
     <g:else>
         <div class="left_col">
-            <h2>What you've been playing - Past 2 weeks</h2>
+            <g:link controller="home" action="refresh">
+                <h2>What you've been playing - Past 2 weeks</h2>
+            </g:link>
             <table class="games">
                 <thead>
                     <tr>
@@ -57,15 +59,14 @@
                 </g:each>
             </table>
 
-            <g:each in="playerBreakDown">
-                <span style="display: none">
-                    ${it.key}
-                    ${it.value}
-                </span>
+            <g:each in="${playerBreakDown}" status="i" var="game">
+                    <h3 style="color: #ffffff">${game.key}</h3>
+                    <br/>
+                    %{--${game.value}--}%
+                <g:each in="${game.value}" status="x" var="player">
+                    ${player}<br/>
+                </g:each>
             </g:each>
-
-
-
         </div>
     </g:else>
 </body>

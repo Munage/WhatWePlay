@@ -28,8 +28,6 @@ class HomeController {
         } else {
             friendList = steamUserService.getFriendsList(userId)
 
-            println(friendList)
-
             friendsRecentlyPlayed = steamGameService.getFriendsGamesPlayed2weeks(friendList)
 
             session.friendList = friendList
@@ -37,7 +35,7 @@ class HomeController {
         }
 
         [result: userRecentlyPlayed, friendsGames: friendsRecentlyPlayed.allGamesPlayed,
-                playerBreakDown: friendsRecentlyPlayed.players]
+                playerBreakDown: friendsRecentlyPlayed.playerBreakdown]
     }
 
     def login(){
