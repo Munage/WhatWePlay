@@ -6,7 +6,8 @@ class HomeController {
     def steamGameService
 
     def index() {
-        String userId = session.steamId ?: params.steamId
+        session.steamId = "76561198041210011" //TODO: remove
+        String userId = "76561198041210011" //session.steamId ?: params.steamId
         if(!userId) {
             return
         }
@@ -26,13 +27,17 @@ class HomeController {
             friendList = session.friendList
         } else {
             friendList = steamUserService.getFriendsList(userId)
+
+            println(friendList)
+
             friendsRecentlyPlayed = steamGameService.getFriendsGamesPlayed2weeks(friendList)
 
             session.friendList = friendList
             session.friendsRecentlyPlayed = friendsRecentlyPlayed
         }
 
-        [result: userRecentlyPlayed, friendsGames: friendsRecentlyPlayed]
+        [result: userRecentlyPlayed, friendsGames: friendsRecentlyPlayed.allGamesPlayed,
+                playerBreakDown: friendsRecentlyPlayed.players]
     }
 
     def login(){
@@ -59,4 +64,19 @@ class HomeController {
         session.invalidate()
         redirect(action: "index")
     }
+
+    def test(){
+
+        def x = [:]
+        def y = [[name: "x", surname: "y"]]
+
+
+        x.put("your mom", y)
+        List temp = x["your mom"]
+        temp.add([name: "z", surname: "lo"])
+        x["your mom"] = temp
+
+        render(x)
+    }
 }
+

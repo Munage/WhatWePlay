@@ -55,8 +55,17 @@
                         <td>${it.value.playtime_2weeks}</td>
                     </tr>
                 </g:each>
-
             </table>
+
+            <g:each in="playerBreakDown">
+                <span style="display: none">
+                    ${it.key}
+                    ${it.value}
+                </span>
+            </g:each>
+
+
+
         </div>
     </g:else>
 </body>

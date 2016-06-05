@@ -29,23 +29,28 @@ class SteamGameService {
         }
 
         Map allGamesPlayed = [:]
+        Map players = [:]
         def friendGames
 
         friendList.friendslist.friends.each {
+            def profile = steamUserService.getProfileInformation(it.steamid)["response"]["players"]
             friendGames = steamUserService.getRecentlyPlayed(it.steamid)
-
-            println(it)
-            println(steamUserService.getProfileInformation(it.steamid))
 
             friendGames["response"]["games"].each{
                 if(allGamesPlayed.containsKey(it.name)){
                     allGamesPlayed[it.name]["playtime_2weeks"] += it["playtime_2weeks"]
                     allGamesPlayed[it.name]["playtime_forever"] += it["playtime_forever"]
+                    List playerList = players[it.name]
+                    playerList.add(profile)
+                    players[it.name] = playerList
                 } else {
                     allGamesPlayed.put(it.name, it)
+                    players.put(it.name, profile)
                 }
             }
         }
+
+        println(players)
 
         //Sort by time played in desc order
         allGamesPlayed = allGamesPlayed.sort { a, b ->
@@ -57,6 +62,6 @@ class SteamGameService {
             it.value["playtime_2weeks"] = TimeUtils.prettifyTime(it.value["playtime_2weeks"])
         }
 
-        return allGamesPlayed
+        return [allGamesPlayed, players]
     }
 }

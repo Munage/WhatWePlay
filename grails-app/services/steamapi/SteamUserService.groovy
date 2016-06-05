@@ -16,6 +16,10 @@ class SteamUserService {
     }
 
     def getProfileInformation(def id){
+        if(!id){
+            return null
+        }
+
         Map q = [key: grailsApplication.config.steam.api.key, steamids:id, format:"json"]
         def response = restApiService.request(grailsApplication.config.steam.api.url, "/ISteamUser/GetPlayerSummaries/v0002", q)
         return response
