@@ -62,19 +62,5 @@ class HomeController {
         session.invalidate()
         redirect(action: "index")
     }
-
-    def test(){
-
-        def x = [:]
-        def y = [[name: "x", surname: "y"]]
-
-
-        x.put("your mom", y)
-        List temp = x["your mom"]
-        temp.add([name: "z", surname: "lo"])
-        x["your mom"] = temp
-
-        render(x)
-    }
 }
 

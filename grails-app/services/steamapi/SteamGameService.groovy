@@ -1,6 +1,7 @@
 package steamapi
 
 import timeUtils.TimeUtils
+
 /**
  * This service is responsible for formatting/modifying/extracting information obtained from the Steam API and
  * providing usable service methods for the controller layer.
@@ -31,13 +32,14 @@ class SteamGameService {
         return final_result
     }
 
-    /*
-        TODO: Refactor. Seriously.
-        Iterate through all friends and populate games-played-list as well as profile-information
+    /**
+     * Iterate through all friends and calculate the total time played for each game and a per player breakdown.
+     * @param PlayerMap A map of players of which to collate play information of.
+     * @return A map containing allGamesPlayed and playerBreakdown
      */
-
-    def getFriendsGamesPlayed2weeks(Map friendList) {
-        if (!friendList) {
+    //TODO: Refactor. Seriously. Split up into 2 methods? DRY.
+    def getFriendsGamesPlayed2weeks(Map PlayerMap) {
+        if (!PlayerMap) {
             return null
         }
 
@@ -45,11 +47,12 @@ class SteamGameService {
         Map players = [:]
         def friendGames
 
-        //Loop through all friends on friends-list
-        friendList.friendslist.friends.each {
+        //Iterate through all players
+        PlayerMap.friendslist.friends.each {
             def profile = steamUserService.getProfileInformation(it.steamid)["response"]["players"]
             friendGames = steamUserService.getRecentlyPlayed(it.steamid)
 
+            //Iterate through each game the user played
             friendGames["response"]["games"].each {
                 if (allGamesPlayed.containsKey(it.name)) {
                     allGamesPlayed[it.name]["playtime_2weeks"] += it["playtime_2weeks"]
