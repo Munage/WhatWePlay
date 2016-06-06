@@ -6,8 +6,7 @@ class HomeController {
     def steamGameService
 
     def index() {
-        session.steamId = "76561198041210011" //TODO: remove
-        String userId = "76561198041210011" //session.steamId ?: params.steamId
+        String userId = session.steamId ?: params.steamId
         if(!userId) {
             return
         }
