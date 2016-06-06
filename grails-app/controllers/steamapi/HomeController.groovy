@@ -16,7 +16,7 @@ class HomeController {
         if(session.userRecentlyPlayed){
             userRecentlyPlayed = session.userRecentlyPlayed
         } else {
-            userRecentlyPlayed = steamGameService.getMyRecentlyPlayed(userId)
+            userRecentlyPlayed = steamGameService.getRecentlyPlayed(userId)
             session.userRecentlyPlayed = userRecentlyPlayed
         }
 

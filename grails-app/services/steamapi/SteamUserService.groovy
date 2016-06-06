@@ -1,6 +1,9 @@
 package steamapi
 
-
+/**
+ * This is the base service that interfaces directly with the Steam API.
+ */
+//TODO: Refactor service name to be more indicative of it's purpose.
 class SteamUserService {
 
     def restApiService

@@ -62,9 +62,8 @@
             <g:each in="${playerBreakDown}" status="i" var="game">
                     <h3 style="color: #ffffff">${game.key}</h3>
                     <br/>
-                    %{--${game.value}--}%
                 <g:each in="${game.value}" status="x" var="player">
-                    ${player}<br/>
+                    ${player[0].personaname} - ${player[1]["playtime_2weeks"]}<br/>
                 </g:each>
             </g:each>
         </div>
