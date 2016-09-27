@@ -80,8 +80,6 @@ class SteamGameService {
             it.value["playtime_2weeks"] = TimeUtils.prettifyTime(it.value["playtime_2weeks"])
         }
 
-        println(players)
-
         return ["allGamesPlayed": allGamesPlayed, "playerBreakdown": players]
     }
 }

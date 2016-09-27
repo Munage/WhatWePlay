@@ -11,6 +11,10 @@ class CookieFilters {
                 if(session.steamId == "null"){
                     session.steamId = null
                 }
+
+                if(params.steamId){
+                    session.steamId = params.steamId
+                }
             }
         }
     }
