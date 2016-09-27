@@ -5,6 +5,8 @@
         <meta name="layout" content="customLayout"/>
     </head>
 <body>
+
+
     <g:if test="${session.steamId}">
         <g:link style="float: right; padding-right: 25px;" action="logout"><h4>Log out</h4></g:link>
     </g:if>
@@ -50,22 +52,22 @@
                 </tr>
                 </thead>
 
+
+
                 <g:each in="${friendsGames}">
-                    <tr>
+                    <tr onclick="displayPlayersForGame('${it.key.toString().replaceAll(' ', '').replaceAll(":", "")}');">
                         <td><img src="${grailsApplication.config.steam.images.url + "/" + it.value.appid + "/" + it.value.img_logo_url + ".jpg"}"></td>
                         <td>${it.key}</td>
                         <td>${it.value.playtime_2weeks}</td>
                     </tr>
                 </g:each>
             </table>
+        </div>
 
-            <g:each in="${playerBreakDown}" status="i" var="game">
-                    <h3 style="color: #ffffff">${game.key}</h3>
-                    <br/>
-                <g:each in="${game.value}" status="x" var="player">
-                    ${player[0].personaname} - ${player[1]["playtime_2weeks"]}<br/>
-                </g:each>
-            </g:each>
+        <div class="right_col">
+            <table class="players">
+                <g:render template="/partials/gamePlayers" bean="${playerBreakDown}" />
+            </table>
         </div>
     </g:else>
 </body>

@@ -1,36 +1,55 @@
 .site-wrapper {
-	background-color: #262626;
+    background-color: #262626;
+}
+
+.site-wrapper h2 {
+    color: #f5f5f5;
+}
+
+.header, .footer {
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
 }
 
 .center {
-	margin: auto;
-	width: 60%;
-	padding: 10px;
-	text-align: center
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    text-align: center
 }
 
-.center img{
-	display: block;
-	padding-top: 20px;
-	margin-left: auto;
-	margin-right: auto
-}
-
-.site-wrapper h2{
-	color: #f5f5f5;
+.center img {
+    display: block;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto
 }
 
 .site-wrapper-inner {
-	padding-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .games td {
-	width: 230px;
-	word-wrap: break-word;
-	padding: 0px 5px;
-	color: #f5f5f5;
+    width: 230px;
+    word-wrap: break-word;
+    padding: 0px 5px;
+    color: #f5f5f5;
 }
 
 .left_col {
-	padding-left: 20px;
+    padding-left: 20px;
+    float: left;
+    max-width: 40%;
+}
+
+.right_col {
+    padding-left: 20px;
+    float: left;
+    max-width: 40%;
+}
+
+.game_players {
+    position: fixed;
 }

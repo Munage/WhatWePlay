@@ -17,7 +17,7 @@
 
 <body class="skin-blue sidebar-mini site-wrapper">
     <div class="site-wrapper-inner">
-    <g:layoutBody/>
+        <g:layoutBody/>
     </div>
 
     <g:render template="/partials/bootstrapFooter"/>

@@ -18,3 +18,16 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
+
+function displayPlayersForGame(appid) {
+    console.log("in display!");
+    $('.game_players').css('display', 'none');
+    $('.' + appid).css('display', 'block');
+};
+
+function formatGameNames(gameName) {
+    gameName = gameName.toString().replace(" ", "");
+    gameName = gameName.toString().replace(":", "");
+
+    return gameName;
+};
